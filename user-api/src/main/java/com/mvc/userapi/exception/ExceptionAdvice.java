@@ -13,5 +13,10 @@ public class ExceptionAdvice {
     String handleUserNotFound(UserNotFoundException ex){
         return  ex.getMessage();
     }
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String handlerValidation(ValidationException ex) {
+        return ex.getMessage();
+    }
 
 }

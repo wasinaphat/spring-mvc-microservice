@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -15,8 +17,8 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class UserRequest {
 
-    @NotEmpty
-    @Size(min = 2,max = 100)
+    @NotNull(message = "username has to be present")
+    @Min(value = 1,message = "at least 1 chars")
     private String username;
     private String password;
     private String email;
