@@ -1,14 +1,11 @@
 package com.mvc.userapi.service;
 
-import com.mvc.userapi.exception.ExceptionAdvice;
 import com.mvc.userapi.exception.ValidationException;
-import com.mvc.userapi.model.User;
+import com.mvc.userapi.model.DAOUser;
 import com.mvc.userapi.repository.UserRepository;
 import com.mvc.userapi.request.UserRequest;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -20,8 +17,8 @@ public class UserServiceImplement implements UserService {
     }
 
     @Override
-    public User createUser(UserRequest user) {
-        User data = new User();
+    public DAOUser createUser(UserRequest user) {
+        DAOUser data = new DAOUser();
         System.out.println(user);
         data.setUsername(user.getUsername()).setPassword(user.getPassword()).setEmail(user.getPassword()).setRole("customer");
         try {
@@ -34,7 +31,7 @@ public class UserServiceImplement implements UserService {
     }
 
     @Override
-    public List<User> getAllUser() {
+    public List<DAOUser> getAllUser() {
         return userRepository.findAll();
     }
 }
