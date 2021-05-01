@@ -1,6 +1,10 @@
 package com.mvc.userapi.model;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -13,7 +17,7 @@ import java.util.Date;
 @Entity
 @Accessors(chain = true)
 @Table(name = "users")
-public class User {
+public class DAOUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

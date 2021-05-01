@@ -2,6 +2,7 @@ package com.mvc.userapi.controller;
 
 import com.mvc.userapi.config.JwtTokenUtil;
 import com.mvc.userapi.request.JwtRequest;
+import com.mvc.userapi.request.UserDTO;
 import com.mvc.userapi.response.JwtResponse;
 import com.mvc.userapi.service.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class JwtAuthenticationController {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+        return ResponseEntity.ok(userDetailsService.save(user));
+    }
+
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
@@ -47,4 +53,5 @@ public class JwtAuthenticationController {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
     }
+
 }
